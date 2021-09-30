@@ -663,14 +663,14 @@ section{
     max-width: 650px;
     display: flex;
     justify-content: flex-start;
-    border-bottom: 4px solid lightgrey;
+    border-bottom: 4px solid #790197ec;
     margin: 0 auto;
 
 }
 
 .fa-times-circle{
     font-size: 15px;
-    color: violet;
+    color: #790197ec;
     margin-left: 10px;
     margin-right: 10px;
     cursor: pointer;
@@ -683,14 +683,14 @@ section{
 
 .quantityP {
     width: 30%;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid #790197ec;
     display: flex;
     align-items: center;
 }
 
 .priceP{
     width: 15%;
-    border-bottom: 4px solid lightgrey;
+    border-bottom: 4px solid #790197ec;
     display: flex;
     align-items: center;
 

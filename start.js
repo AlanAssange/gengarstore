@@ -162,6 +162,7 @@ function displayCart() {
     let cartItems = localStorage.getItem("productsInCart")
     cartItems = JSON.parse(cartItems);
     let productContainer = document.querySelector(".almacenamiento");
+    let cartCost = localStorage.getItem("totalCost");
 
     if(cartItems && productContainer){
         productContainer.innerHTML = "";
@@ -171,19 +172,28 @@ function displayCart() {
             <i class="far fa-times-circle"></i>
             <img class="tees" src="img/${item.tag}.jpg">
             <span>${item.name}</span>
-            </div>
             <div class="pricePP">${item.price}</div>
-            <div class="quantity>
             <i class="fas fa-arrow-alt-circle-left"></i>
             <span>${item.inCart}</span>
             <i class="fas fa-arrow-alt-circle-right"></i>
-            </div>
+            
             <div class="total">$${item.inCart * item.price}</div>
-            `
+            </div>
+            `;
         })
-
+  
     }
+
+    productContainer.innerHTML += `
+    <div class="cartTotalContainer">
+        <h4 class="cartTotalTitle>
+            Total </h4>
+        <h4 class="totalTitle">
+        $${cartCost}
+        </h4>
+    `
 }
+
 
 loadcartNumbers();
 displayCart();
@@ -201,4 +211,5 @@ open.addEventListener('click', () => {
 close.addEventListener('click', () => {
   modal_container.classList.remove('show');
 });
+
 

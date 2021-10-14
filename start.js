@@ -1,3 +1,9 @@
+
+
+const boxContainer = document.querySelector(".box-container");
+    
+
+
 //navbar responsive//
 let navbar = document.querySelector('.navbar');
 
@@ -17,69 +23,37 @@ document.querySelector('#search-btn').onclick = () =>{
     cartItem.classList.remove('active');
 }
 
+const generateCards = () =>{
+     $.get("data.json", (response,status)=>{if (status === "success"){
+        response.forEach((producto)=>{
+            $("#box-container").prepend(
+            `<div class="box">
+                <img class="imgP" src="img/${producto.tag}.jpg" alt="">
+                <h3>${producto.name}</h3>
+                <div class="price">$15.99 <span>20.99</span></div>
+                <a href="#" class="btn">Añadir al carrito</a>
+            </div>`
+            )
+            console.log(producto)
+          })
+     }})
+  }
+
+generateCards()
+
+
 //declaro los productos//
-let products = [
-    {
-        name: "LUCARIO TEE",
-        tag: "lucario",
-        price: 15.99,
-        inCart: 0
-    },
-    {
-        name: "MEWTWO TEE",
-        tag: "mewtwo",
-        price: 15.99,
-        inCart: 0
-    },
-    {
-        name: "VENASAUR TEE",
-        tag: "venasaur",
-        price: 15.99,
-        inCart: 0
-    },
-    {
-        name: "ZAPDOS TEE",
-        tag: "zapdos",
-        price: 20.99,
-        inCart: 0
-    },
-    {
-        name: "BLASTOISE TEE",
-        tag: "blastoise",
-        price: 20.99,
-        inCart: 0
-    },
-    {
-        name: "GENGAR TEE",
-        tag: "gengar",
-        price: 20.99,
-        inCart: 0
-    },
-    {
-        name: "JIGLYPUFF TEE",
-        tag: "jigly",
-        price: 20.99,
-        inCart: 0
-    },
-    {
-        name: "HAUNTER TEE",
-        tag: "haunter",
-        price: 20.99,
-        inCart: 0
-    },
-    {
-        name: "MEOWTH TEE",
-        tag: "meowth",
-        price: 20.99,
-        inCart: 0
-    },
-    {
-        name: "PIKACHU TEE",
-        tag: "pikachu",
-        price: 20.99,
-        inCart: 0
-    }
-];
+// const products = function loadDoc() {
+//     let request = new XMLHttpRequest();
+//     request.onreadystatechange = function() {
+//       if (this.readyState == 4 && this.status == 200) {
+//         console.log(this)
+        
+//       }
+//     };
+//     request.open("GET", "data.json", true);
+//     request.send();
+//   }
 
 
 //llamo a los botones del carrito a través del query//

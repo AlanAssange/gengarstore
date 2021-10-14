@@ -1,0 +1,63 @@
+[
+    {
+        
+      "name": "LUCARIO TEE",
+      "tag": "lucario",
+      "price": 15.99,
+      "inCart": 0
+    },
+    {
+      "name": "MEWTWO TEE",
+      "tag": "mewtwo",
+      "price": 15.99,
+      "inCart": 0
+    },
+    {
+      "name": "VENASAUR TEE",
+      "tag": "venasaur",
+      "price": 15.99,
+      "inCart": 0
+    },
+    {
+      "name": "ZAPDOS TEE",
+      "tag": "zapdos",
+      "price": 20.99,
+      "inCart": 0
+    },
+    {
+      "name": "BLASTOISE TEE",
+      "tag": "blastoise",
+      "price": 20.99,
+      "inCart": 0
+    },
+    {
+      "name": "GENGAR TEE",
+      "tag": "gengar",
+      "price": 20.99,
+      "inCart": 0
+    },
+    {
+      "name": "JIGLYPUFF TEE",
+      "tag": "jigly",
+      "price": 20.99,
+      "inCart": 0
+    },
+    {
+      "name": "HAUNTER TEE",
+      "tag": "haunter",
+      "price": 20.99,
+      "inCart": 0
+    },
+    {
+      "name": "MEOWTH TEE",
+      "tag": "meowth",
+      "price": 20.99,
+      "inCart": 0
+    },
+    {
+      "name": "PIKACHU TEE",
+      "tag": "pikachu",
+      "price": 20.99,
+      "inCart": 0
+    }
+  ]

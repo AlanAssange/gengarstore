@@ -42,6 +42,7 @@ let carts = document.querySelectorAll('.btn');
 //loop que encasilla a todos los productos y los añade al carrito//
 for (let i=0; i < carts.length; i++){
     carts[i].addEventListener("click", () => {
+        event.preventDefault()
         cartNumbers(products[i])
         totalCost(products[i])
     })
@@ -126,11 +127,11 @@ function displayCart() {
             <span>${item.name}</span>
             </div>
             <div class="pricePP">${item.price}</div>
-            <div class="quantity>
-            <i class="fas fa-arrow-alt-circle-left"></i>
+            
+            <i class="fas fa-bahai"></i>
             <span>${item.inCart}</span>
-            <i class="fas fa-arrow-alt-circle-right"></i>
-            </div>
+           
+            
             <div class="total">$${item.inCart * item.price}</div>
             `
         })
@@ -154,4 +155,5 @@ open.addEventListener('click', () => {
 close.addEventListener('click', () => {
   modal_container.classList.remove('show');
 });
+
 

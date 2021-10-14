@@ -657,12 +657,6 @@ section{
     margin-top: 25vh;
 }
 
-.propductos {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
-}
-
 .headerP {
     width: 100%;
     color: white;
@@ -710,12 +704,14 @@ section{
     width: 70px;
 }
 
+.quantity{
+    margin-left: 40vh;
+}
 
+.totalf {
+    margin-left: 60vh;
+}
 
-
-
-
-/*Gracias por su compra*/
 .buynow {
     align-items: center;
     margin-left: 40vh;
@@ -731,7 +727,6 @@ section{
 .buynow:hover{
     letter-spacing: .2rem;
 }
-
 
 .modal-container {
     display: flex;
@@ -770,8 +765,4 @@ section{
   .modal p {
     opacity: 0.7;
     font-size: 14px;
-  }
-
-#gengarajax  {
-      color: white;
   }

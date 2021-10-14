@@ -1,9 +1,3 @@
-
-
-const boxContainer = document.querySelector(".box-container");
-    
-
-
 //navbar responsive//
 let navbar = document.querySelector('.navbar');
 
@@ -23,38 +17,23 @@ document.querySelector('#search-btn').onclick = () =>{
     cartItem.classList.remove('active');
 }
 
-const generateCards = () =>{
-     $.get("data.json", (response,status)=>{if (status === "success"){
-        response.forEach((producto)=>{
-            $("#box-container").prepend(
-            `<div class="box">
-                <img class="imgP" src="img/${producto.tag}.jpg" alt="">
-                <h3>${producto.name}</h3>
-                <div class="price">$15.99 <span>20.99</span></div>
-                <a href="#" class="btn">Añadir al carrito</a>
-            </div>`
-            )
-            console.log(producto)
-          })
-     }})
-  }
-
-generateCards()
-
-
 //declaro los productos//
-// const products = function loadDoc() {
-//     let request = new XMLHttpRequest();
-//     request.onreadystatechange = function() {
-//       if (this.readyState == 4 && this.status == 200) {
-//         console.log(this)
-        
-//       }
-//     };
-//     request.open("GET", "data.json", true);
-//     request.send();
-//   }
+function recupero() {
+    let recuperar= JSON.parse(localStorage.getItem('products'))
+    if(recuperar){
+        recuperar.forEach(el => {
+            products.push(el)
+        });
+    }
+}
 
+let products = []
+
+$.getJSON('productos.json', function (data) {
+
+    localStorage.setItem('products', JSON.stringify(data))
+    recupero()
+  })
 
 //llamo a los botones del carrito a través del query//
 let carts = document.querySelectorAll('.btn');
@@ -136,7 +115,6 @@ function displayCart() {
     let cartItems = localStorage.getItem("productsInCart")
     cartItems = JSON.parse(cartItems);
     let productContainer = document.querySelector(".almacenamiento");
-    let cartCost = localStorage.getItem("totalCost");
 
     if(cartItems && productContainer){
         productContainer.innerHTML = "";
@@ -146,28 +124,19 @@ function displayCart() {
             <i class="far fa-times-circle"></i>
             <img class="tees" src="img/${item.tag}.jpg">
             <span>${item.name}</span>
+            </div>
             <div class="pricePP">${item.price}</div>
+            <div class="quantity>
             <i class="fas fa-arrow-alt-circle-left"></i>
             <span>${item.inCart}</span>
             <i class="fas fa-arrow-alt-circle-right"></i>
-            
-            <div class="total">$${item.inCart * item.price}</div>
             </div>
-            `;
+            <div class="total">$${item.inCart * item.price}</div>
+            `
         })
-  
+
     }
-
-    productContainer.innerHTML += `
-    <div class="cartTotalContainer">
-        <h4 class="cartTotalTitle>
-            Total </h4>
-        <h4 class="totalTitle">
-        $${cartCost}
-        </h4>
-    `
 }
-
 
 loadcartNumbers();
 displayCart();
@@ -185,5 +154,4 @@ open.addEventListener('click', () => {
 close.addEventListener('click', () => {
   modal_container.classList.remove('show');
 });
-
 

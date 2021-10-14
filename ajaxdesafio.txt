@@ -1,4 +1,0 @@
-<h1>HTML - CSS - JAVASCRIPT - JQUERY</h1>
-<p>Vanilla Javascript.</p>
-<p>Animaciones en Jquery.</p>
-<p>Compilado en SASS</p>

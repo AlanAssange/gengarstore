@@ -7,16 +7,6 @@ document.querySelector('#menu-btn').onclick = () =>{
     cartItem.classList.remove('active');
 }
 
-//búsqueda//
-
-let searchForm = document.querySelector('.search-form');
-
-document.querySelector('#search-btn').onclick = () =>{
-    searchForm.classList.toggle('active');
-    navbar.classList.remove('active');
-    cartItem.classList.remove('active');
-}
-
 //declaro los productos//
 function recupero() {
     let recuperar= JSON.parse(localStorage.getItem('products'))
@@ -125,14 +115,11 @@ function displayCart() {
             <i class="far fa-times-circle"></i>
             <img class="tees" src="img/${item.tag}.jpg">
             <span>${item.name}</span>
+            <div class="pricePP" id="marginflex">${item.price}</div>
+            <i class="fas fa-bahai" id="marginflex"></i>
+            <span id="marginflex">${item.inCart}</span>
+            <div class="total" id="marginflex">$${item.inCart * item.price}</div>
             </div>
-            <div class="pricePP">${item.price}</div>
-            
-            <i class="fas fa-bahai"></i>
-            <span>${item.inCart}</span>
-           
-            
-            <div class="total">$${item.inCart * item.price}</div>
             `
         })
 

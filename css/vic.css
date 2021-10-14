@@ -766,3 +766,17 @@ section{
     opacity: 0.7;
     font-size: 14px;
   }
+
+  .fa-bahai {
+      color: #790197ec;
+  }
+
+  .propductos {
+      display: flex;
+      margin: 25px;
+  }
+
+#marginflex {
+    padding: 15px;
+    font-size: 13px;
+}

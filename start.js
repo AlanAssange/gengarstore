@@ -20,10 +20,12 @@ function recupero() {
 let products = []
 
 $.getJSON('productos.json', function (data) {
-
+if (!localStorage.getItem("products")){
+    //Si no tengo productos en localStorage, los seteo, sino directamente los agarro sin setear
     localStorage.setItem('products', JSON.stringify(data))
+     }
     recupero()
-  })
+})
 
 //llamo a los botones del carrito a través del query//
 let carts = document.querySelectorAll('.btn');
@@ -100,19 +102,38 @@ function totalCost(product) {
     }
 }
 
+function removeElementFromCart(tag){
+//  localStorage solo admite datos de tipo string, por lo tanto, para manipularlos en JS necesito "parsearlos" a objetos (JSON.parse)
+   let productsInCart = JSON.parse(localStorage.getItem("productsInCart"))
+// mediante delete borramos propiedades del objeto productsInCart, usando bracket notation, accedemos dinámicamente a las propiedades del objeto. productsInCart.tag intentaría buscar una propiedad "tag" dentro del objeto
+   delete productsInCart[tag] 
+// seteamos el localStorage, el objeto actualizado sin la propiedad que coincide con el parámetro de la función (tag) pasándolo a string mediante JSON.stringify
+   localStorage.setItem("productsInCart",JSON.stringify(productsInCart))
+//seteamos el localStorage correspondiente a la cantidad de objetos en el carrito que coincide con el largo de entradas del objeto productsInCart. Para esto, procedemos a transformar el objeto del localStorage con JSON.parse mediante Object.entries a un array y luego obtenemos el largo mediante lenght.    
+   localStorage.setItem("cartNumbers", `${Object.entries(JSON.parse(localStorage.getItem("productsInCart"))).length}`)
+ // Mediante Jquery selecciono el nodo con "id=tag" y lo remuevo del DOM.  
+   $(`#${tag}`).remove()
+
+ //actualizo el nodo correspondiente a los items en el carrito   
+
+   loadcartNumbers();
+}
 
 //Carrito: Display de imágenes, precio, cantidad y total//
 function displayCart() {
     let cartItems = localStorage.getItem("productsInCart")
-    cartItems = JSON.parse(cartItems);
+    if (cartItems) {
+        cartItems = JSON.parse(cartItems);
+    }
     let productContainer = document.querySelector(".almacenamiento");
 
     if(cartItems && productContainer){
         productContainer.innerHTML = "";
         Object.values(cartItems).map(item =>{
             productContainer.innerHTML +=`
-            <div class="propductos">
-            <i class="far fa-times-circle"></i>
+            
+            <div class="propductos" id="${item.tag}">
+            <i class="far fa-times-circle remove-button" id="${item.tag}"></i>
             <img class="tees" src="img/${item.tag}.jpg">
             <span>${item.name}</span>
             <div class="pricePP" id="marginflex">${item.price}</div>
@@ -123,7 +144,7 @@ function displayCart() {
             `
         })
 
-    }
+    }else productContainer.innerHTML = "";
 }
 
 loadcartNumbers();
@@ -135,6 +156,18 @@ const open = document.getElementById('open');
 const modal_container = document.getElementById('modal_container');
 const close = document.getElementById('close');
 
+modal_container.addEventListener('click', () => {
+    //vacío el localStorage y seteo "cartNumbers" a 0 (siempre string)
+    localStorage.setItem("productsInCart", "");
+    localStorage.setItem("cartNumbers", "0")
+    //actualizo el DOM
+    loadcartNumbers();
+
+    displayCart();
+
+
+  });
+
 open.addEventListener('click', () => {
   modal_container.classList.add('show');  
 });
@@ -144,3 +177,6 @@ close.addEventListener('click', () => {
 });
 
 
+//Agrego event listeners a cada uno de los botones de "remove item" y llamo a la función que los remueve pasandole como parámetro el id correspondiente al nodo. 
+const removeButtonlist = Array.from(document.querySelectorAll(".remove-button")) 
+removeButtonlist.forEach((button)=>button.addEventListener("click",()=>{removeElementFromCart(button.getAttribute("id"))}))

@@ -91,6 +91,8 @@ function setItems(product){
     localStorage.setItem("productsInCart", JSON.stringify(cartItems));
 }
 
+//calculo el costo final, luego se verá en la consola.
+
 function totalCost(product) {
     let cartCost = localStorage.getItem("totalCost");
 
@@ -177,6 +179,6 @@ close.addEventListener('click', () => {
 });
 
 
-//Agrego event listeners a cada uno de los botones de "remove item" y llamo a la función que los remueve pasandole como parámetro el id correspondiente al nodo. 
+//Agrego event listeners a cada uno de los botones definidos por el id "remove" y llamo a la función que los remueve pasandole como parámetro el id correspondiente al nodo. 
 const removeButtonlist = Array.from(document.querySelectorAll(".remove-button")) 
 removeButtonlist.forEach((button)=>button.addEventListener("click",()=>{removeElementFromCart(button.getAttribute("id"))}))

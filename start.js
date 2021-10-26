@@ -128,6 +128,7 @@ function displayCart() {
         cartItems = JSON.parse(cartItems);
     }
     let productContainer = document.querySelector(".almacenamiento");
+    let cartCost = localStorage.getItem("totalCost");
 
     if(cartItems && productContainer){
         productContainer.innerHTML = "";
@@ -144,7 +145,17 @@ function displayCart() {
             <div class="total" id="marginflex">$${item.inCart * item.price}</div>
             </div>
             `
-        })
+        });
+
+        productContainer.innerHTML += `
+        <div class="basketTotalContainer>
+            <h4 class="basketTotalTitle>
+                Cart Total:
+            </h4>
+            <h4 class="basketTotal">
+            $${cartCost}
+            </h4>
+        `
 
     }else productContainer.innerHTML = "";
 }

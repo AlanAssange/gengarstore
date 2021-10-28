@@ -12,15 +12,7 @@ document.querySelector('#menu-btn').onclick = () =>{
 let constructorObject = document.querySelector("#rawunique");
 
 
-class Pokemon {
-    constructor(name, price, inCarts) {
-        this.name = name;
-        this.price = parseFloat(price);
-        this.inCart = inCarts;
-    }
-}
 
-const mewtwotee = new Pokemon ("Mewtwo Tee", 20.99, "Scroll debajo para comprar!")
 
 constructorObject.innerHTML +=`
             

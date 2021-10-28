@@ -6,7 +6,7 @@ const close = document.getElementById('close');
 
 modal_container.addEventListener('click', () => {
     //vacío el localStorage y seteo "cartNumbers" a 0 (siempre string)
-    localStorage.setItem("productsInCart", "");
+    localStorage.setItem("productsInCart", JSON.stringify(""));
     localStorage.setItem("cartNumbers", "0")
     //actualizo el DOM
     loadcartNumbers();

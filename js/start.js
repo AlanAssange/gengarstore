@@ -64,7 +64,7 @@ function cartNumbers(product){
 function setItems(product){
     let cartItems = localStorage.getItem("productsInCart");
     cartItems = JSON.parse(cartItems);
-
+console.log(cartItems)
     if(cartItems != null){
 
         if(cartItems[product.tag] == undefined) {
@@ -150,7 +150,7 @@ function displayCart() {
             </h4>
         `
 
-    }else productContainer.innerHTML = "";
+    }else if(productContainer) productContainer.innerHTML = "";
 }
 
 loadcartNumbers();
@@ -161,3 +161,35 @@ displayCart();
 //Agrego event listeners a cada uno de los botones definidos por el id "remove" y llamo a la función que los remueve pasandole como parámetro el id correspondiente al nodo. 
 const removeButtonlist = Array.from(document.querySelectorAll(".remove-button")) 
 removeButtonlist.forEach((button)=>button.addEventListener("click",()=>{removeElementFromCart(button.getAttribute("id"))}))
+
+
+
+//constructora objeto del día//
+class ProductoDelDia {
+    constructor(name, tag) {
+        this.name = name;
+        this.tag = tag;
+    }
+}
+function createProductofTheDay (producto) {
+    if(!producto)return
+    const item = new ProductoDelDia(producto.name, producto.tag);
+    document.getElementById("rowunique").innerHTML=`
+    <h3 id="product-of-the-day">El objeto del día de hoy es:</h3>
+    <h4>${item.name}</h4>
+    <img class="tees" src="img/${item.tag}.jpg">
+
+    `
+
+
+}
+
+createProductofTheDay($.getJSON('productos.json'))
+// const productoftheday = $.getJSON('productos.json').responseJSON
+const random = Math.round(Math.random()*10)
+
+$.getJSON( "productos.json", function( json ) {
+    const randomProduct = json[random]
+    createProductofTheDay(randomProduct);
+ 
+   });

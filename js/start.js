@@ -177,7 +177,7 @@ function createProductofTheDay (producto) {
     document.getElementById("rowunique").innerHTML=`
     <h3 id="product-of-the-day">El objeto del día de hoy es:</h3>
     <h4>${item.name}</h4>
-    <img class="tees" src="img/${item.tag}.jpg">
+    <img class="tees" id="tees" src="img/${item.tag}.jpg">
 
     `
 
@@ -185,7 +185,6 @@ function createProductofTheDay (producto) {
 }
 
 createProductofTheDay($.getJSON('productos.json'))
-// const productoftheday = $.getJSON('productos.json').responseJSON
 const random = Math.round(Math.random()*10)
 
 $.getJSON( "productos.json", function( json ) {

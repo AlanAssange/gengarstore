@@ -786,6 +786,13 @@ section{
       margin: 25px;
   }
 
+  #tees {
+      width: 300px;
+  }
+
+  h4 {
+      color: white;
+  }
 #marginflex {
     padding: 15px;
     font-size: 13px;
